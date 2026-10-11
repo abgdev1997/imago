@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1c1612;
+  --paper: #f4efe8;
+  --card: #fffdfb;
+  --line: #e5dcd2;
+  --copper: #8d3d2c;
+  --moss: #246246;
+  --amber: #8d5b0b;
+  --mute: #5e564e;
+  --canvas: #e7e0d6;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --ink: #f6f0e8;
+  --paper: #14110e;
+  --card: #221c18;
+  --line: #3c342d;
+  --copper: #f0c2b4;
+  --moss: #b7e0cb;
+  --amber: #f0d7a4;
+  --mute: #c0b4a8;
+  --canvas: #0c0a09;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-copper: var(--copper);
+  --color-moss: var(--moss);
+  --color-amber: var(--amber);
+  --color-mute: var(--mute);
+  --color-canvas: var(--canvas);
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-fraunces);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans), sans-serif;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--copper) 28%, transparent);
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(client-header),
+::view-transition-group(client-nav) {
+  animation: none;
+  z-index: 100;
+}
+
+::view-transition-old(client-header),
+::view-transition-old(client-nav) {
+  display: none;
+}
+
+::view-transition-new(client-header),
+::view-transition-new(client-nav) {
+  animation: none;
+}
+
+::view-transition-old(.ios-forward) {
+  animation: 460ms cubic-bezier(0.32, 0.72, 0, 1) both ios-leave;
+}
+
+::view-transition-new(.ios-forward) {
+  animation: 460ms cubic-bezier(0.32, 0.72, 0, 1) both ios-enter;
+  box-shadow: -24px 0 48px rgb(28 22 18 / 16%);
+}
+
+::view-transition-old(.ios-back) {
+  animation: 420ms cubic-bezier(0.32, 0.72, 0, 1) both ios-enter reverse;
+  box-shadow: -24px 0 48px rgb(28 22 18 / 16%);
+}
+
+::view-transition-new(.ios-back) {
+  animation: 420ms cubic-bezier(0.32, 0.72, 0, 1) both ios-leave reverse;
+}
+
+::view-transition-old(.netflix-fade) {
+  animation: 180ms ease both netflix-out;
+}
+
+::view-transition-new(.netflix-fade) {
+  animation: 520ms cubic-bezier(0.16, 1, 0.3, 1) both netflix-in;
+}
+
+@keyframes ios-enter {
+  from {
+    translate: 100% 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes ios-leave {
+  from {
+    translate: 0 0;
+    filter: brightness(1);
+  }
+  to {
+    translate: -28% 0;
+    filter: brightness(0.72);
+  }
+}
+
+@keyframes netflix-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes netflix-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+    scale: 0.985;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+.ios-backdrop {
+  animation: netflix-out 220ms ease reverse;
+}
+
+.ios-backdrop > :last-child {
+  animation: ios-enter-y 480ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes ios-enter-y {
+  from {
+    translate: 0 100%;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+.imago-pin-wrap {
+  background: transparent;
+  border: 0;
+}
+
+.imago-pin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 64px;
+  height: 46px;
+  border-radius: 16px;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 18px rgb(28 22 18 / 16%);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.imago-pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 8px;
+  height: 8px;
+  background: var(--card);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.imago-pin-score {
+  font-weight: 600;
+}
+
+.imago-pin-price {
+  color: var(--copper);
+}
+
+.imago-pin.is-on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.imago-pin.is-on::after {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.imago-pin.is-on .imago-pin-price {
+  color: var(--paper);
+}
+
+.leaflet-container {
+  z-index: 0;
+  background: #e7efe6;
+  font-family: inherit;
+}
+
+.leaflet-bar a {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
