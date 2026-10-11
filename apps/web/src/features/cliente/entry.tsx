@@ -19,66 +19,68 @@ export function Entry() {
     enter();
   }
 
+  const glass =
+    "flex h-[52px] w-full items-center justify-center rounded-full border border-white/20 bg-white/10 px-5 text-[15.5px] font-semibold text-white backdrop-blur-md";
+
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-[#1c1612] text-[#f6f1ea]">
-      <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-[#8d3d2c]/30 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-72 w-72 rounded-full bg-[#c4a574]/10 blur-3xl" />
-      <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col justify-between px-6 py-10">
-        <p className="text-xs uppercase tracking-[0.28em] text-[#d7c4b4]">
-          Estudios de imagen
+    <main className="relative flex min-h-dvh items-end overflow-hidden bg-black text-white">
+      <div className="aurora" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <i />
+        <i />
+      </div>
+      <div className="relative z-[1] mx-auto flex w-full max-w-[390px] flex-col gap-3.5 px-5 pb-8">
+        <div className="mb-1 flex items-center gap-3">
+          <span className="orbe" aria-hidden="true" />
+          <h1 className="marca text-[28px]">IMAGO</h1>
+        </div>
+        <p className="italic-serif mb-2 text-2xl leading-snug text-white/80">
+          Pide cita como se la pedirías a alguien del estudio.
         </p>
-        <div>
-          <h1 className="font-serif text-6xl tracking-[0.22em]">IMAGO</h1>
-          <p className="mt-4 max-w-xs text-lg leading-7 text-[#eadfd3]">
-            Pide cita como se la pedirías a alguien del estudio.
-          </p>
-          <div className="mt-8 flex flex-col gap-3">
-            <button type="button" onClick={go} className="rounded-full bg-[#f6f1ea] px-4 py-3 text-sm text-[#1c1612]">
-              Continuar con Apple
-            </button>
-            <button type="button" onClick={go} className="rounded-full border border-[#f6f1ea]/30 px-4 py-3 text-sm">
-              Continuar con Google
-            </button>
-            {emailMode ? (
-              <form
-                className="rounded-3xl border border-[#f6f1ea]/20 p-4"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  go();
-                }}
-              >
-                <label className="text-xs uppercase tracking-[0.16em] text-[#d7c4b4]" htmlFor="email">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(event) => setEmail(event.target.value)}
-                  className="mt-2 w-full rounded-2xl bg-[#f6f1ea] px-3 py-2 text-sm text-[#1c1612] outline-none"
-                />
-                <button type="submit" className="mt-3 w-full rounded-full bg-[#8d3d2c] px-4 py-3 text-sm">
-                  Entrar como Lucía
-                </button>
-              </form>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setEmailMode(true)}
-                className="rounded-full border border-[#f6f1ea]/30 px-4 py-3 text-sm"
-              >
-                Continuar con email
+        <div className="flex flex-col gap-2">
+          <button type="button" onClick={go} className="flex h-[52px] w-full items-center justify-center rounded-full bg-white px-5 text-[15.5px] font-semibold text-black">
+            Continuar con Apple
+          </button>
+          <button type="button" onClick={go} className={glass}>
+            Continuar con Google
+          </button>
+          {emailMode ? (
+            <form
+              className="rounded-[20px] border border-white/15 bg-white/10 p-4 backdrop-blur-md"
+              onSubmit={(event) => {
+                event.preventDefault();
+                go();
+              }}
+            >
+              <label className="text-xs uppercase tracking-[0.14em] text-white/60" htmlFor="email">
+                Email
+              </label>
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className="mt-2 h-12 w-full rounded-[14px] border border-white/15 bg-black/40 px-4 text-[15px] text-white outline-none"
+              />
+              <button type="submit" className="mt-3 flex h-[52px] w-full items-center justify-center rounded-full bg-white text-[15.5px] font-semibold text-black">
+                Entrar como Lucía
               </button>
-            )}
-            <div className="flex gap-4 text-sm text-[#d7c4b4]">
-              <button type="button" onClick={go}>Facebook</button>
-              <button type="button" onClick={go}>Instagram</button>
-            </div>
+            </form>
+          ) : (
+            <button type="button" onClick={() => setEmailMode(true)} className={glass}>
+              Continuar con email
+            </button>
+          )}
+          <div className="flex gap-4 text-sm text-white/70">
+            <button type="button" onClick={go}>Facebook</button>
+            <button type="button" onClick={go}>Instagram</button>
           </div>
         </div>
-        <div className="flex items-center justify-between text-sm">
-          <span className="text-[#b7a89c]">Maqueta · octubre 2026</span>
-          <Link href="/business" transitionTypes={["nav-fade"]} className="inline-flex min-h-11 items-center text-[#f0d2c4]">
+        <div className="mt-2 flex items-center justify-between text-sm text-white/50">
+          <span>Maqueta · octubre 2026</span>
+          <Link href="/business" transitionTypes={["nav-fade"]} className="inline-flex min-h-11 items-center text-white/80">
             Soy un negocio
           </Link>
         </div>

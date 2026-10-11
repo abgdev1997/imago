@@ -68,7 +68,7 @@ export function Citas() {
         ))}
       </div>
       {target ? (
-        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
           <div className="w-full max-w-[480px] rounded-t-3xl bg-card p-5">
             <h2 className="font-serif text-3xl">Cancelar</h2>
             <p className="mt-2 text-sm leading-6">

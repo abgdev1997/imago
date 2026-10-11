@@ -194,7 +194,7 @@ export function Ficha({ id }: { id: string }) {
         <Sheet title="Mensaje" onClose={() => setMessage(false)}>
           <div className="flex flex-col gap-2">
             {thread.map((line, index) => (
-              <p key={line + index} className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${index % 2 === 0 ? "bg-ink text-paper" : "bg-paper"}`}>
+              <p key={line + index} className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm ${index % 2 === 0 ? "bg-ink text-paper" : "bg-card ring-1 ring-line"}`}>
                 {line}
               </p>
             ))}
@@ -274,7 +274,7 @@ function Sheet({
   children: React.ReactNode;
 }) {
   return (
-    <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+    <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
       <div className="max-h-[86dvh] w-full max-w-[480px] overflow-auto rounded-t-3xl bg-card p-5">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-serif text-3xl">{title}</h2>

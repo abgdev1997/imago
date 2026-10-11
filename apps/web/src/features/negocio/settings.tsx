@@ -200,7 +200,7 @@ export function Settings() {
 
 function Bubble({ text, mine = false }: { text: string; mine?: boolean }) {
   return (
-    <p className={`max-w-[80%] rounded-2xl px-3 py-2 ${mine ? "ml-auto bg-ink text-paper" : "bg-paper"}`}>
+    <p className={`max-w-[80%] rounded-2xl px-3 py-2 ${mine ? "ml-auto bg-ink text-paper" : "bg-card ring-1 ring-line"}`}>
       {text}
     </p>
   );

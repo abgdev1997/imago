@@ -39,7 +39,7 @@ const initial: State = {
     marta: "Color cada ocho semanas. Solo con Inés.",
   },
   offer: null,
-  theme: "light",
+  theme: "dark",
   toast: null,
 };
 

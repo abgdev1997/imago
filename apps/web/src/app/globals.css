@@ -1,29 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --ink: #1c1612;
-  --paper: #f4efe8;
-  --card: #fffdfb;
-  --line: #e5dcd2;
-  --copper: #8d3d2c;
-  --moss: #246246;
-  --amber: #8d5b0b;
-  --mute: #5e564e;
-  --canvas: #e7e0d6;
-  color-scheme: light;
+  --ink: #f4f2ee;
+  --paper: #100f15;
+  --card: rgba(30, 29, 37, 0.74);
+  --line: rgba(255, 255, 255, 0.08);
+  --copper: #ffd9b8;
+  --moss: #3ddc97;
+  --amber: #f5c451;
+  --mute: rgba(244, 242, 238, 0.64);
+  --faint: rgba(244, 242, 238, 0.4);
+  --canvas: #100f15;
+  --glass: rgba(16, 15, 21, 0.72);
+  --surface-2: rgba(40, 39, 49, 0.78);
+  --a-op: 0.34;
+  color-scheme: dark;
 }
 
-html[data-theme="dark"] {
-  --ink: #f6f0e8;
-  --paper: #14110e;
-  --card: #221c18;
-  --line: #3c342d;
-  --copper: #f0c2b4;
-  --moss: #b7e0cb;
-  --amber: #f0d7a4;
-  --mute: #c0b4a8;
-  --canvas: #0c0a09;
-  color-scheme: dark;
+html[data-theme="light"] {
+  --ink: #141311;
+  --paper: #f7f3ee;
+  --card: rgba(255, 255, 255, 0.72);
+  --line: rgba(22, 20, 17, 0.09);
+  --copper: #8a4b32;
+  --moss: #1fae6c;
+  --amber: #e0a113;
+  --mute: rgba(20, 19, 17, 0.62);
+  --faint: rgba(20, 19, 17, 0.42);
+  --canvas: #f7f3ee;
+  --glass: rgba(247, 243, 238, 0.74);
+  --surface-2: rgba(244, 240, 233, 0.82);
+  --a-op: 0.5;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -36,15 +44,149 @@ html[data-theme="dark"] {
   --color-amber: var(--amber);
   --color-mute: var(--mute);
   --color-canvas: var(--canvas);
-  --font-sans: var(--font-geist-sans);
-  --font-serif: var(--font-fraunces);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-archivo);
+  --font-serif: var(--font-archivo);
+  --font-mono: var(--font-archivo);
+  --color-faint: var(--faint);
+  --color-glass: var(--glass);
 }
 
 body {
   background: var(--canvas);
   color: var(--ink);
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-stretch: 108%;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.marca {
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: 0.16em;
+}
+
+.italic-serif {
+  font-family: var(--font-instrument), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  font-stretch: 100%;
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora i {
+  position: absolute;
+  width: 85%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: var(--a-op);
+  animation: deriva-a 28s ease-in-out infinite alternate;
+}
+
+.aurora i:nth-child(1) {
+  top: -18%;
+  left: -25%;
+  background: radial-gradient(circle, #ffb08a 0%, transparent 62%);
+}
+
+.aurora i:nth-child(2) {
+  top: 8%;
+  right: -35%;
+  background: radial-gradient(circle, #b49dff 0%, transparent 62%);
+  animation-name: deriva-b;
+  animation-duration: 34s;
+}
+
+.aurora i:nth-child(3) {
+  bottom: -20%;
+  left: -10%;
+  background: radial-gradient(circle, #7fe0c0 0%, transparent 62%);
+  animation-name: deriva-c;
+  animation-duration: 31s;
+}
+
+.aurora i:nth-child(4) {
+  right: -20%;
+  bottom: 10%;
+  background: radial-gradient(circle, #86c4ff 0%, transparent 62%);
+  animation-duration: 38s;
+  animation-delay: -12s;
+}
+
+.aurora i:nth-child(5) {
+  top: 40%;
+  left: 20%;
+  width: 60%;
+  background: radial-gradient(circle, #ff9fc8 0%, transparent 62%);
+  animation-name: deriva-b;
+  animation-duration: 42s;
+  animation-delay: -20s;
+  opacity: calc(var(--a-op) * 0.7);
+}
+
+@keyframes deriva-a {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(22%, 14%) scale(1.15); }
+  100% { transform: translate(8%, 30%) scale(0.95); }
+}
+
+@keyframes deriva-b {
+  0% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-26%, 18%) scale(0.9); }
+  100% { transform: translate(-12%, -16%) scale(1.12); }
+}
+
+@keyframes deriva-c {
+  0% { transform: translate(0, 0) scale(0.95); }
+  50% { transform: translate(18%, -22%) scale(1.12); }
+  100% { transform: translate(30%, -6%) scale(1); }
+}
+
+.orbe {
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.orbe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform-origin: center;
+  background: conic-gradient(from 0deg, #ffd9b8, #fff1c2, #cff3d6, #c2e8ff, #d8ccff, #ffd0ea, #ffd9b8);
+  animation: girar 6s linear infinite;
+}
+
+.orbe::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #2a2a31, #0c0c0f 70%);
+}
+
+.orbe svg {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
 }
 
 button,
@@ -231,7 +373,7 @@ select {
 
 .leaflet-container {
   z-index: 0;
-  background: #e7efe6;
+  background: #16141c;
   font-family: inherit;
 }
 

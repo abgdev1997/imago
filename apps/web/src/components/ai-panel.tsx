@@ -52,7 +52,7 @@ export function AiPanel({ mode }: { mode: "cliente" | "negocio" }) {
             className={`max-w-[90%] rounded-2xl px-3 py-2 text-sm leading-5 ${
               message.from === "yo"
                 ? "ml-auto bg-ink text-paper"
-                : "bg-paper text-ink"
+                : "bg-card text-ink ring-1 ring-line"
             }`}
           >
             <p>{message.text}</p>

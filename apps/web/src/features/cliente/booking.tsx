@@ -380,7 +380,7 @@ export function Booking({
       </div>
 
       {paying ? (
-        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
           <div className="w-full max-w-[480px] rounded-t-3xl bg-card p-5">
             <p className="text-xs uppercase tracking-[0.16em] text-mute">Pago simulado</p>
             <h2 className="mt-1 font-serif text-3xl">{pay === "senal" ? money(10) : money(service?.price ?? 0)}</h2>

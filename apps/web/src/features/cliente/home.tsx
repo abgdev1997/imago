@@ -85,16 +85,16 @@ export function Home() {
       </div>
 
       {dueFree ? (
-        <section className="mt-5 rounded-3xl bg-ink p-5 text-paper">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#e7c7ba]">Ya te toca</p>
-          <h2 className="mt-2 font-serif text-3xl leading-tight">El corte con Marcos</h2>
-          <p className="mt-2 text-sm leading-6 text-[#f0e6dc]">
+        <section className="mt-5 rounded-[22px] bg-card p-4 ring-1 ring-line">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-mute">Ya te toca</p>
+          <h2 className="mt-2 font-serif text-2xl leading-tight">El corte con Marcos</h2>
+          <p className="mt-2 text-sm leading-6 text-mute">
             Tu última visita fue el 20 de septiembre. El martes 13 a las 18:00 sigue libre.
           </p>
           <Link
             href="/reservar/sublime?dia=2026-10-13&hora=18:00&servicio=corte&pro=marcos&paso=4"
             transitionTypes={["nav-forward"]}
-            className="mt-4 inline-block rounded-full bg-paper px-4 py-2 text-sm text-ink"
+            className="mt-4 inline-flex h-10 items-center rounded-full bg-ink px-4 text-sm font-semibold text-paper"
           >
             Reservar ese hueco
           </Link>
@@ -191,7 +191,7 @@ export function Home() {
       ) : null}
 
       {bell ? (
-        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
           <div className="w-full max-w-[480px] rounded-t-3xl bg-card p-5">
             <div className="mb-4 flex items-center justify-between">
               <h2 className="font-serif text-3xl">Avisos</h2>
@@ -226,7 +226,7 @@ function Quiz({
   const title = ["¿Qué te apetece ahora?", "¿Qué pesa más?", "¿Hasta dónde te mueves?"][step];
 
   return (
-    <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+    <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
       <div className="w-full max-w-[480px] rounded-t-3xl bg-card p-5">
         <p className="text-xs uppercase tracking-[0.16em] text-mute">Pregunta {step + 1} de 3</p>
         <h2 className="mt-1 font-serif text-3xl">{title}</h2>

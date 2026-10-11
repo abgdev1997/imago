@@ -306,7 +306,7 @@ function Filter({ label, active, onClick }: { label: string; active: boolean; on
 
 function Drawer({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   return (
-    <div className="ios-backdrop fixed inset-0 z-50 flex justify-end bg-ink/40">
+    <div className="ios-backdrop fixed inset-0 z-50 flex justify-end bg-black/55">
       <button type="button" className="hidden flex-1 sm:block" aria-label="Cerrar" onClick={onClose} />
       <div className="h-full w-full max-w-md overflow-auto bg-card p-5">
         <div className="mb-4 flex items-center justify-between">

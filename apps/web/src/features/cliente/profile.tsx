@@ -50,7 +50,7 @@ export function Profile() {
       </button>
 
       {section ? (
-        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-ink/50">
+        <div className="ios-backdrop fixed inset-0 z-50 flex items-end justify-center bg-black/55">
           <div className="max-h-[88dvh] w-full max-w-[480px] overflow-auto rounded-t-3xl bg-card p-5">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="font-serif text-3xl">{section}</h2>
@@ -144,7 +144,7 @@ export function Profile() {
                       setLanguage(item);
                       store.notify(item === "Español" ? "Idioma: español." : "Guardado. La maqueta sigue escrita en español.");
                     }}
-                    className={`rounded-2xl px-3 py-3 text-left text-sm ${language === item ? "bg-ink text-paper" : "bg-paper"}`}
+                    className={`rounded-2xl px-3 py-3 text-left text-sm ${language === item ? "bg-ink text-paper" : "bg-card ring-1 ring-line"}`}
                   >
                     {item}
                   </button>

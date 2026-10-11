@@ -22,7 +22,7 @@ export function BusinessShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh bg-canvas text-ink md:flex">
       <aside className="hidden w-60 shrink-0 flex-col border-r border-line bg-card px-5 py-7 md:flex">
-        <Link href="/business" className="font-serif text-3xl tracking-[0.18em]">
+        <Link href="/business" className="marca text-2xl">
           IMAGO
         </Link>
         <p className="mt-1 text-xs uppercase tracking-[0.16em] text-mute">Business</p>
@@ -49,7 +49,7 @@ export function BusinessShell({ children }: { children: React.ReactNode }) {
       <div className="min-w-0 flex-1 pb-20 md:pb-0">{children}</div>
       <nav
         aria-label="Negocio"
-        className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-line bg-paper md:hidden"
+        className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-line bg-glass backdrop-blur-2xl md:hidden"
       >
         {links.map((link) => (
           <Link
