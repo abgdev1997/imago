@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Booking } from "@/features/cliente/booking";
 import { businesses } from "@/lib/data";
 
@@ -9,7 +10,21 @@ function one(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-export default async function Page({
+export default function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  return (
+    <Suspense fallback={<p className="px-5 pt-6 text-sm text-mute">Cargando la reserva…</p>}>
+      <BookingFromQuery params={params} searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function BookingFromQuery({
   params,
   searchParams,
 }: {
