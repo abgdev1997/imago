@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09090b">
+  <title>IMAGO</title>
+  <link rel="manifest" href="clientes.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/imago-180.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="IMAGO">
+  <meta name="robots" content="noindex">
+  <link rel="preload" href="assets/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..700,0..100,0..1&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-app="cliente" class="instalable">
+  <div class="stage">
+    <aside class="side">
+      <div class="side__brand">
+        <span class="marca marca--xl" data-logo></span>
+        <p class="side__lead">Dos apps: <b>Clientes</b> para reservar, descubrir y seguir a tus negocios, y <b>Business</b> para llevar el día a día del local.</p>
+      </div>
+      <div class="modo" id="modo" data-modo="cliente">
+        <span class="modo__pill"></span>
+        <button data-a="modo" data-m="cliente" aria-pressed="true">Clientes</button>
+        <button data-a="modo" data-m="negocio" aria-pressed="false">Business</button>
+      </div>
+      <div class="segmento" data-seg data-seg-tema style="margin:0">
+        <span class="segmento__pill" style="width:calc((100% - 8px) / 2)"></span>
+        <button data-a="tema" data-v="oscuro" data-j="0">Oscuro</button>
+        <button data-a="tema" data-v="claro" data-j="1">Claro</button>
+      </div>
+      <div>
+        <h3>Versión 2 · más simple, como Booksy (13/10)</h3>
+        <ul class="side__try">
+          <li><button data-a="demo" data-d="v2Reserva"><span>C</span><span>Reservar en una sola ventana</span></button></li>
+          <li><button data-a="demo" data-d="v2Senal"><span>C</span><span>Reservar con señal (protección)</span></button></li>
+          <li><button data-a="demo" data-d="v2Muro"><span>C</span><span>Muro: solo lo escribe el equipo</span></button></li>
+          <li><button data-a="demo" data-d="v2Sitio"><span>C</span><span>Tu sitio ideal (3 preguntas)</span></button></li>
+          <li><button data-a="demo" data-d="v2Feed"><span>C</span><span>Feed estilo TikTok (antes Inspiración)</span></button></li>
+          <li><button data-a="demo" data-d="v2Perfil"><span>C</span><span>Perfil sencillo</span></button></li>
+          <li><button data-a="demo" data-d="v2ChatCli"><span>C</span><span>Chat de la cita con el negocio</span></button></li>
+          <li><button data-a="demo" data-d="v2Agenda"><span>B</span><span>Calendario primero (iconos día/semana/mes)</span></button></li>
+          <li><button data-a="demo" data-d="v2Radial"><span>B</span><span>Botón central en círculo</span></button></li>
+          <li><button data-a="demo" data-d="v2ChatBiz"><span>B</span><span>Mensajes de los clientes</span></button></li>
+          <li><button data-a="demo" data-d="v2Clientes"><span>B</span><span>Clientes sin filtros, faltas arriba</span></button></li>
+          <li><button data-a="demo" data-d="v2Pagos"><span>B</span><span>Pagos y protección contra inasistencias</span></button></li>
+          <li><button data-a="demo" data-d="v2Ajustes"><span>B</span><span>Ajustes como Booksy</span></button></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Versión 1 sin IA · lo nuevo (13/10)</h3>
+        <ul class="side__try">
+          <li><button data-a="demo" data-d="v1Splash"><span>★</span><span>Entrada: la «o» se abre y llena la pantalla</span></button></li>
+          <li><button data-a="demo" data-d="v1ColorNacar"><span>·</span><span>Color de marca: nácar</span></button></li>
+          <li><button data-a="demo" data-d="v1ColorTinta"><span>·</span><span>Color de marca: tinta</span></button></li>
+          <li><button data-a="demo" data-d="v1ColorVioleta"><span>·</span><span>Color de marca: violeta</span></button></li>
+          <li><button data-a="demo" data-d="v1Inicio"><span>C</span><span>Inicio: «Reservar de nuevo» y colores</span></button></li>
+          <li><button data-a="demo" data-d="v1Repetir"><span>C</span><span>Reservar de nuevo en 1 toque</span></button></li>
+          <li><button data-a="demo" data-d="v1Ficha"><span>C</span><span>Ficha: servicios primero + tablón</span></button></li>
+          <li><button data-a="demo" data-d="v1Inspiracion"><span>C</span><span>Inspiración: «Quiero esto» y Guardados</span></button></li>
+          <li><button data-a="demo" data-d="v1Permiso"><span>C</span><span>Aviso antes de pedir notificaciones</span></button></li>
+          <li><button data-a="demo" data-d="v1Recordatorio"><span>C</span><span>Recordatorio (Confirmar · Cambiar · Cancelar)</span></button></li>
+          <li><button data-a="demo" data-d="v1Guia"><span>C</span><span>Guía corta (clientes)</span></button></li>
+          <li><button data-a="demo" data-d="v1Agenda"><span>B</span><span>Calendario con tarjetas resumen</span></button></li>
+          <li><button data-a="demo" data-d="v1NuevaCita"><span>B</span><span>Reservar a pantalla completa</span></button></li>
+          <li><button data-a="demo" data-d="v1Camara"><span>B</span><span>Cámara: grabar o subir un vídeo</span></button></li>
+          <li><button data-a="demo" data-d="v1Huecos"><span>B</span><span>Publicar un hueco libre</span></button></li>
+          <li><button data-a="demo" data-d="v1Inasistencias"><span>B</span><span>Inasistencias con filtros</span></button></li>
+          <li><button data-a="demo" data-d="v1Filtros"><span>B</span><span>Buscador de clientes con filtros</span></button></li>
+          <li><button data-a="demo" data-d="v1Ajustes"><span>B</span><span>Ajustes ordenados por temas</span></button></li>
+          <li><button data-a="demo" data-d="v1Recordatorios"><span>B</span><span>Recordatorios app + email</span></button></li>
+          <li><button data-a="demo" data-d="v1Campos"><span>B</span><span>Campos de la ficha (mascota…)</span></button></li>
+          <li><button data-a="demo" data-d="v1Funciones"><span>B</span><span>Funciones aparcadas (interruptores)</span></button></li>
+          <li><button data-a="demo" data-d="v1GuiaBiz"><span>B</span><span>Guía corta (Business)</span></button></li>
+        </ul>
+        <p class="side__note">C = Clientes · B = Business. Lo aparcado se puede volver a encender en Business → Ajustes → Funciones.</p>
+      </div>
+      <div>
+        <h3>Novedades anteriores (algunas aparcadas)</h3>
+        <ul class="side__try">
+          <li><button data-a="demo" data-d="nGuiaCli"><span>★</span><span>Guía de la primera vez (clientes)</span></button></li>
+          <li><button data-a="demo" data-d="nGuiaBiz"><span>★</span><span>Guía de la primera vez (Business)</span></button></li>
+          <li><button data-a="demo" data-d="nComisiones"><span>★</span><span>Comisiones de cada profesional</span></button></li>
+          <li><button data-a="demo" data-d="nFueraHorario"><span>★</span><span>Business: fuera de horario</span></button></li>
+          <li><button data-a="demo" data-d="nFueraHorarioCli"><span>★</span><span>Reservar fuera de horario (×2)</span></button></li>
+          <li><button data-a="demo" data-d="nMigracion"><span>★</span><span>Cámbiate a IMAGO (migración)</span></button></li>
+          <li><button data-a="demo" data-d="nMuroBiz"><span>★</span><span>Business: muro y novedades</span></button></li>
+          <li><button data-a="demo" data-d="nResenaPro"><span>★</span><span>Reseñas de cada profesional</span></button></li>
+          <li><button data-a="demo" data-d="nValorar"><span>★</span><span>Valorar una visita</span></button></li>
+          <li><button data-a="demo" data-d="nCambio"><span>★</span><span>Proponer cambio de cita</span></button></li>
+          <li><button data-a="demo" data-d="nCambioBiz"><span>★</span><span>Business: aceptar un cambio</span></button></li>
+          <li><button data-a="demo" data-d="nCambioRecibido"><span>★</span><span>Te proponen un intercambio</span></button></li>
+          <li><button data-a="demo" data-d="nAviso"><span>★</span><span>Mensaje al entrar en el negocio</span></button></li>
+          <li><button data-a="demo" data-d="nAvisoBiz"><span>★</span><span>Business: escribir el mensaje</span></button></li>
+          <li><button data-a="demo" data-d="nTemporales"><span>★</span><span>Business: servicios temporales</span></button></li>
+          <li><button data-a="demo" data-d="nTemporalesCli"><span>★</span><span>Reservar en Navidad (temporales)</span></button></li>
+          <li><button data-a="demo" data-d="nIaCliente"><span>★</span><span>IA: «una barbería barata»</span></button></li>
+          <li><button data-a="demo" data-d="nIaGerente"><span>★</span><span>IA gerente: quién falta más</span></button></li>
+          <li><button data-a="demo" data-d="nIaEmpleado"><span>★</span><span>IA empleado: sin facturación</span></button></li>
+          <li><button data-a="demo" data-d="nInasistencias"><span>★</span><span>Clientes → Inasistencias</span></button></li>
+          <li><button data-a="demo" data-d="nReservarBiz"><span>★</span><span>Reservar desde el calendario</span></button></li>
+          <li><button data-a="demo" data-d="nVuelve"><span>1</span><span>«Ya te toca»: vuelve a tu corte</span></button></li>
+          <li><button data-a="demo" data-d="nFlash"><span>2</span><span>Oferta para un día flojo</span></button></li>
+          <li><button data-a="demo" data-d="nRecepcion"><span>3</span><span>Recepcionista IA en WhatsApp</span></button></li>
+          <li><button data-a="demo" data-d="nBonos"><span>4</span><span>Bonos y Club Sublime</span></button></li>
+          <li><button data-a="demo" data-d="nRegalo"><span>5</span><span>Tarjeta regalo</span></button></li>
+          <li><button data-a="demo" data-d="nCobro"><span>6</span><span>Propina y cobro con el móvil</span></button></li>
+          <li><button data-a="demo" data-d="nFicha"><span>7</span><span>Ficha técnica, antes/después y firmas</span></button></li>
+          <li><button data-a="demo" data-d="nCanales"><span>8</span><span>Reservar desde Google e Instagram</span></button></li>
+          <li><button data-a="demo" data-d="nIdioma"><span>9</span><span>Idiomas (English)</span></button></li>
+          <li><button data-a="demo" data-d="nChat"><span>10</span><span>Chat con el negocio</span></button></li>
+          <li><button data-a="demo" data-d="nBandeja"><span>11</span><span>Mensajes en Business</span></button></li>
+        </ul>
+      </div>
+      <div>
+        <h3>IMAGO Clientes</h3>
+        <ul class="side__try">
+          <li><button data-a="demo" data-d="registro"><span>1</span><span>Registro y preguntas de la primera vez</span></button></li>
+          <li><button data-a="demo" data-d="preguntas"><span>2</span><span>Cuestionario con IA: tu sitio ideal</span></button></li>
+          <li><button data-a="demo" data-d="inicio"><span>3</span><span>Inicio con categorías, favoritos y ofertas</span></button></li>
+          <li><button data-a="demo" data-d="buscar"><span>4</span><span>Buscar con filtros y ordenar</span></button></li>
+          <li><button data-a="demo" data-d="mapa"><span>5</span><span>Mapa con notas y resumen de la IA</span></button></li>
+          <li><button data-a="demo" data-d="calendario"><span>6</span><span>Reservar: primero el calendario</span></button></li>
+          <li><button data-a="demo" data-d="barbero"><span>7</span><span>Elegir profesional (se ilumina)</span></button></li>
+          <li><button data-a="demo" data-d="ia"><span>8</span><span>Pedir cita hablando con la IA</span></button></li>
+          <li><button data-a="demo" data-d="muro"><span>9</span><span>Muro de la comunidad</span></button></li>
+          <li><button data-a="demo" data-d="inspiracion"><span>10</span><span>Inspiración: enviar y guardar</span></button></li>
+          <li><button data-a="demo" data-d="citas"><span>11</span><span>Mis citas con el profesional</span></button></li>
+          <li><button data-a="demo" data-d="perfil"><span>12</span><span>Perfil: sobre mí, pagos, Face ID</span></button></li>
+        </ul>
+      </div>
+      <div>
+        <h3>IMAGO Business</h3>
+        <ul class="side__try">
+          <li><button data-a="demo" data-d="agenda"><span>1</span><span>Calendario: día</span></button></li>
+          <li><button data-a="demo" data-d="semana"><span>2</span><span>Calendario: semana con % de ocupación</span></button></li>
+          <li><button data-a="demo" data-d="mes"><span>3</span><span>Calendario: mes</span></button></li>
+          <li><button data-a="demo" data-d="espera"><span>4</span><span>Lista de espera</span></button></li>
+          <li><button data-a="demo" data-d="avisosBiz"><span>5</span><span>Notificaciones</span></button></li>
+          <li><button data-a="demo" data-d="clientes"><span>6</span><span>Clientes</span></button></li>
+          <li><button data-a="demo" data-d="ficha"><span>7</span><span>Ficha de un cliente nuevo (FIRST)</span></button></li>
+          <li><button data-a="demo" data-d="caja"><span>8</span><span>Caja</span></button></li>
+          <li><button data-a="demo" data-d="ajustes"><span>9</span><span>Ajustes</span></button></li>
+          <li><button data-a="demo" data-d="miPerfil"><span>10</span><span>Mi perfil (Javi)</span></button></li>
+          <li><button data-a="demo" data-d="agendaIA"><span>11</span><span>Agenda inteligente con IA</span></button></li>
+          <li><button data-a="demo" data-d="galeria"><span>12</span><span>Galería: subir trabajos de cada profesional</span></button></li>
+          <li><button data-a="demo" data-d="marketing"><span>13</span><span>Marketing</span></button></li>
+          <li><button data-a="demo" data-d="suscripcion"><span>14</span><span>Suscripción y facturas</span></button></li>
+          <li><button data-a="demo" data-d="recordatorios"><span>15</span><span>Recordatorios por WhatsApp</span></button></li>
+          <li><button data-a="demo" data-d="stats"><span>16</span><span>Estadísticas</span></button></li>
+          <li><button data-a="demo" data-d="recompensas"><span>17</span><span>Recompensas IMAGO</span></button></li>
+        </ul>
+      </div>
+
+      <p class="side__note">Prototipo con datos de ejemplo. La IA, los pagos y el registro están simulados. Enlaces directos: <a href="?app=clientes">Clientes</a> · <a href="?app=business">Business</a>.</p>
+    </aside>
+
+    <div class="device">
+      <div class="screen" id="screen">
+        <div class="statusbar" aria-hidden="true">
+          <span>9:41</span><i class="statusbar__isla"></i>
+          <span class="statusbar__icons">
+            <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.5c2.3 0 4.4.9 6 2.4l1.2-1.3A10.3 10.3 0 008 .7 10.3 10.3 0 00.8 3.6L2 4.9a8.5 8.5 0 016-2.4zm0 3.6c1.3 0 2.5.5 3.4 1.4l1.2-1.3A6.6 6.6 0 008 4.3c-1.8 0-3.4.7-4.6 1.9l1.2 1.3c.9-.9 2.1-1.4 3.4-1.4zm0 3.5c.5 0 .9.2 1.2.5L8 11.4 6.8 10.1c.3-.3.7-.5 1.2-.5z"/></svg>
+            <svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><rect x="23.5" y="4" width="1.5" height="4" rx=".7" fill="currentColor" opacity=".4"/></svg>
+          </span>
+        </div>
+
+        <div class="aurora aurora--app" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <main id="vista"></main>
+        <nav class="tabbar" id="tabbar" aria-label="Navegación"></nav>
+
+        <div class="velo" id="velo"></div>
+        <section class="hoja" id="hoja-ia" aria-label="Asistente IA">
+          <div class="hoja__asa"><i></i></div>
+          <div class="hoja__cab">
+            <span class="orbe"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5l1.7 5 5 1.7-5 1.7-1.7 5-1.7-5-5-1.7 5-1.7z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></span>
+            <div><b data-marca-t>Imago</b><small><i class="punto"></i>Tu asistente · responde al momento</small></div>
+            <button class="icon-btn" data-a="cerrar-hoja" aria-label="Cerrar"><svg class="ic" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+          </div>
+          <div class="hoja__cuerpo" id="ia-cuerpo" aria-live="polite"></div>
+          <form class="hoja__input" id="ia-form">
+            <input id="ia-input" type="text" placeholder="Escribe o pídeme una cita…" autocomplete="off" aria-label="Mensaje para la IA">
+            <button class="icon-btn" type="submit" aria-label="Enviar"><svg class="ic" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </form>
+        </section>
+        <section class="hoja" id="hoja-gen"></section>
+
+        <div class="trailer" id="trailer" hidden></div>
+        <div class="toast" id="toast" role="status"></div>
+        <div class="splash" id="splash" hidden></div>
+        <div class="faceid" id="faceid" hidden></div>
+        <i class="home-ind"></i>
+      </div>
+    </div>
+  </div>
+  <script src="logo.js"></script>
+  <script src="data.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script src="app.js"></script>
+  <script src="cliente.js"></script>
+  <script src="business.js"></script>
+  <script src="extras.js"></script>
+  <script src="reservar-biz.js"></script>
+  <script src="ia-limitada.js"></script>
+  <script src="colores-cat.js"></script>
+  <script src="negocio-avisos.js"></script>
+  <script src="cambio-citas.js"></script>
+  <script src="resenas-pro.js"></script>
+  <script src="muro-biz.js"></script>
+  <script src="migracion.js"></script>
+  <script src="fuera-horario.js"></script>
+  <script src="comisiones.js"></script>
+  <script src="guia.js"></script>
+  <script src="version1.js"></script>
+  <script src="version2.js"></script>
+  <script src="arranque.js"></script>
+</body>
+</html>

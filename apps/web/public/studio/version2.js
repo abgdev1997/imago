@@ -10,6 +10,8 @@ Object.assign(ICON, {
   vdia: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13.5v4"/>',
   vsemana: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M8 13.5v4M12 13.5v4M16 13.5v4"/>',
   vmes: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 13.5h.01M12 13.5h.01M16.5 13.5h.01M7.5 17h.01M12 17h.01M16.5 17h.01"/>',
+  muro: '<rect x="3.5" y="4" width="17" height="16" rx="3"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/>',
+  tablon: '<path d="M5 4h14a1 1 0 011 1v9l-6 6H5a1 1 0 01-1-1V5a1 1 0 011-1z"/><path d="M14 20v-5a1 1 0 011-1h5"/>',
   agendaMas: '<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M12 12.5v5.5M9.2 15.2h5.6"/>',
 });
 
@@ -240,7 +242,9 @@ envolver(VISTAS.clientes, 'html', function (orig) {
 /* =====================================================================
    7 · Business · Botón central que se despliega en círculo
    ===================================================================== */
-const RADIAL = [['camara', 'Cámara', 'camara-abrir'], ['megafono', 'Muro', 'radial-muro'], ['chat', 'Mensajes', 'radial-chat'], ['agendaMas', 'Nueva cita', 'biz-reservar'], ['reloj', 'Hueco libre', 'tr-huecos'], ['pin2', 'Tablón', 'radial-tablon']];
+/* Cada acción tiene su pareja en la app del cliente: Cámara → Feed · Muro → muro de la ficha · Nueva cita → Mis citas ·
+   Mensajes → chat de la cita · Tablón → aviso arriba de la ficha. (Los huecos libres se publican tocando el hueco en el calendario.) */
+const RADIAL = [['camara', 'Cámara', 'camara-abrir'], ['muro', 'Muro', 'radial-muro'], ['agendaMas', 'Nueva cita', 'biz-reservar'], ['chat', 'Mensajes', 'radial-chat'], ['tablon', 'Tablón', 'radial-tablon']];
 {
   const orig = pintarTabbar;
   pintarTabbar = (visible) => {
@@ -257,11 +261,8 @@ function abrirRadial() {
   if ($('.radial')) return cerrarRadial();
   const el = document.createElement('div');
   el.className = 'radial';
-  const pant = $('#screen').getBoundingClientRect(), o = ($('#tabbar .tab--cam .orbe') || $('#tabbar')).getBoundingClientRect();
-  el.style.setProperty('--cx', `${(o.left + o.width / 2 - pant.left).toFixed(0)}px`);
-  el.style.setProperty('--cy', `${(o.top + o.height / 2 - pant.top).toFixed(0)}px`);
   el.innerHTML = `<button class="radial__velo" data-a="radial-cerrar" aria-label="Cerrar"></button><button class="radial__x" data-a="radial-cerrar" aria-label="Cerrar">${ic('mas')}</button>${RADIAL.map(([icono, t, a], i) => {
-    const ang = ((170 - i * 32) * Math.PI) / 180, r = 155;
+    const ang = ((162 - i * 36) * Math.PI) / 180, r = 138;
     return `<button class="radial__it" data-a="${a}" data-radial="1" aria-label="${t}" style="--x:${(Math.cos(ang) * r).toFixed(1)}px;--y:${(-Math.sin(ang) * r).toFixed(1)}px;--d:${i * 28}ms"><span>${ic(icono)}</span><small>${t}</small></button>`;
   }).join('')}`;
   $('#screen').appendChild(el);
@@ -484,7 +485,7 @@ Object.assign(A, {
 GUIAS.negocio.pasos = [
   ['.ag-cab', 'Tu calendario', 'Lo primero. Cambia entre día, semana y mes con los iconos y filtra por profesional.'],
   ['.fab-reservar', 'Nueva cita', 'Primero el cliente y luego el servicio. También tocando un hueco libre.'],
-  ['[data-a="radial"]', 'Acciones rápidas', 'Se despliega en círculo: cámara, muro, mensajes, nueva cita, hueco libre y tablón.'],
+  ['[data-a="radial"]', 'Acciones rápidas', 'Se despliega en círculo: cámara, muro, nueva cita, mensajes y tablón.'],
   ['[data-a="tab"][data-v="ajustes"]', 'Ajustes', 'Como Booksy: perfil, servicios, equipo, reservas, pagos y clientes.'],
 ];
 Object.assign(DEMOS, {
@@ -496,7 +497,7 @@ Object.assign(DEMOS, {
   v2Muro: () => { abrirApp('cliente', 'inicio'); S.tabFicha = 'muro'; S.historial = ['inicio']; ir('negocio'); },
   v2ChatCli: () => { abrirApp('cliente', 'citas'); if (!citaYo()) { citaDemo(); render(null); } setTimeout(() => ir('chat-cita'), 300); },
   v2Agenda: () => { S.agendaModo = 'dia'; S.agendaFecha = HOY; abrirApp('negocio', 'agenda'); render(null); },
-  v2Radial: () => { S.agendaModo = 'dia'; abrirApp('negocio', 'agenda'); render(null); setTimeout(abrirRadial, 400); },
+  v2Radial: () => { S.agendaModo = 'dia'; abrirApp('negocio', 'agenda'); render(null); setTimeout(abrirRadial, 1800); },
   v2ChatBiz: () => { abrirApp('negocio', 'clientes'); ir('bandeja'); },
   v2Pagos: () => { abrirApp('negocio', 'ajustes'); ir('pagos'); },
   v2Ajustes: () => { abrirApp('negocio', 'ajustes'); render(null); },
@@ -522,3 +523,19 @@ document.addEventListener('change', (e) => { if (e.target.id === 'cam-estilo' &&
     if (S.subidos.length > antes) ESTILO_TRABAJO[String(S.subidos[0].id)] = est;
   };
 }
+
+/* =====================================================================
+   13 · Entrada como Zalando: la «o» sale en el centro, se abre hacia ti y llena la pantalla de su color
+   (un aro liso y un disco con el mismo centro, para que todo crezca desde el mismo punto)
+   ===================================================================== */
+splash = function (m) {
+  const el = $('#splash');
+  clearTimeout(splash.t); clearTimeout(splash.t2);
+  el.className = `splash sp2 sp2--${S.colorMarca}`;
+  el.innerHTML = `<span class="sp2__g"><i class="sp2__lleno"></i><i class="sp2__o"></i></span>${m === 'negocio' ? '<small class="sp2__biz">Business</small>' : ''}`;
+  el.hidden = false;
+  splash.t = setTimeout(() => {
+    el.classList.add('sale');
+    splash.t2 = setTimeout(() => { el.hidden = true; el.className = 'splash'; }, 380);
+  }, reducido ? 450 : 1500);
+};

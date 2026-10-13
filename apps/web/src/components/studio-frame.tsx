@@ -1,6 +1,6 @@
 export function StudioFrame({ app }: { app: "cliente" | "business" }) {
   const business = app === "business";
-  const src = business ? "/studio/index.html?app=business" : "/studio/index.html";
+  const src = business ? "/studio/business.html" : "/studio/clientes.html";
 
   return (
     <div className="fixed inset-0 flex flex-col bg-[#09090b]">
