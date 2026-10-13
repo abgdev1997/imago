@@ -1,10 +1,5 @@
-import { RouteTransition } from "@/components/route-transition";
-import { Entry } from "@/features/cliente/entry";
+import { StudioFrame } from "@/components/studio-frame";
 
 export default function Page() {
-  return (
-    <RouteTransition>
-      <Entry />
-    </RouteTransition>
-  );
+  return <StudioFrame app="cliente" />;
 }

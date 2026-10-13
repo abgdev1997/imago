@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="es"
       className={`${archivo.variable} ${instrument.variable} h-full antialiased`}
     >
-      <body className="min-h-full">
+      <body className="min-h-full" suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
     </html>
